@@ -45,7 +45,6 @@ async function run() {
     app.post('/productByIds', async(req, res)=>{
       const ids = req.body;
       const objectids = ids.map(id=>new ObjectId(id))
-      console.log(objectids)
       const query = {_id: {$in: objectids}}
       const result = await productCollection.find(query).toArray()
       res.send(result)
